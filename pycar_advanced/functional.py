@@ -1,8 +1,4 @@
-class Result(object):
-    def __init__(self, candidate_name, candidate_id, total_votes):
-        self.candidate_name = candidate_name
-        self.candidate_id = candidate_id
-        self.total_votes = total_votes
+from pycar_advanced.results import Result
 
 def generate_results(results_list):
     """
@@ -20,6 +16,12 @@ def generate_results(results_list):
 
     """
     # TODO: Implement this generator 
+    for result_dict in results_list:
+        yield Result(
+            candidate_name=result_dict['candidate_name'],
+            candidate_id=result_dict['candidate_id'],
+            total_votes=int(result_dict['total_votes'])
+        )
 
 def candidate_first_names(results):
     """
@@ -35,3 +37,4 @@ def candidate_first_names(results):
     """
     # TODO: Use a list comprehension to generate a list of candidate first
     # names from an iterable of Result objects
+    return [r.candidate_name.split(' ')[0] for r in results]
