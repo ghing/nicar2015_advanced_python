@@ -17,5 +17,4 @@ class UtilsTestCase(unittest.TestCase):
         #
         # * Remove leading/trailing whitespace
         # * Compact consecutive whitespace
-        self.assertEqual(utils.slugify(" Cool string "), "cool-string")
-        self.assertEqual(utils.slugify("Cool  String"), "cool-string")
+        self.fail()

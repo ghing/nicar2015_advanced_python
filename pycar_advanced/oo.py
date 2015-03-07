@@ -20,8 +20,6 @@ class ResultsFetcher(object):
 
         """
         # TODO: Implement this
-        r = requests.get(url)
-        return r.text
 
 
 class ResultsParser(object):
@@ -37,17 +35,6 @@ class ResultsParser(object):
 
         """
         # TODO: Implement this
-        f = StringIO(s)
-        reader = csv.DictReader(f)
-        results = []
-        for row in reader:
-            results.append(Result(
-                candidate_name=row['candidate_name'],
-                candidate_id=row['candidate_id'],
-                total_votes=int(row['total_votes'])
-            ))
-   
-        return results
 
 
 class ResultsClient(object):
@@ -56,8 +43,6 @@ class ResultsClient(object):
     def __init__(self):
         # TODO: Implement this to compose functionality from ResultsFetcher
         # and ResultsParser
-        self._fetcher = ResultsFetcher() 
-        self._parser = ResultsParser()
 
     def parse(self, s):
         """
@@ -71,7 +56,6 @@ class ResultsClient(object):
 
         """
         # TODO: Delegate to a ResultsParser instance to parse results
-        return self._parser.parse(s)
 
     def fetch(self, url=None):
         """
@@ -89,7 +73,6 @@ class ResultsClient(object):
 
         # TODO: Delegate to a ResultsFetcher instance to fetch results
         # and return a string
-        return self._fetcher.fetch(url)
 
     def load(self):
         return self.parse(self.fetch())

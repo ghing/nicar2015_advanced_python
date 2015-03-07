@@ -46,14 +46,14 @@ Willie Wilson,21598,49612
 
 # TODO: Use the ResultsTestMixin to DRY up these three test cases 
 
-class ResultParserTestCase(ResultsTestMixin, unittest.TestCase):
+class ResultParserTestCase(unittest.TestCase):
     def test_parse(self):
         parser = ResultsParser()
         results = parser.parse(self.results_csv)
         self._test_results(results)
 
 
-class ResultFetcherTestCase(ResultsTestMixin, unittest.TestCase):
+class ResultFetcherTestCase(unittest.TestCase):
     @responses.activate
     def test_fetch(self):
         responses.add(responses.GET, self.csv_url, 
@@ -68,9 +68,4 @@ class ResultClientTestCase(ResultsTestMixin, unittest.TestCase):
     @responses.activate
     def test_load(self):
         # TODO: Implement this
-        responses.add(responses.GET, self.csv_url, 
-            body=self.results_csv, status=200, content_type='text/csv')
-
-        client = ResultsClient()
-        results = client.load()
-        self._test_results(results)
+        self.fail()

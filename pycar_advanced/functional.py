@@ -16,12 +16,7 @@ def generate_results(results_list):
 
     """
     # TODO: Implement this generator 
-    for result_dict in results_list:
-        yield Result(
-            candidate_name=result_dict['candidate_name'],
-            candidate_id=result_dict['candidate_id'],
-            total_votes=int(result_dict['total_votes'])
-        )
+
 
 def candidate_first_names(results):
     """
@@ -37,4 +32,3 @@ def candidate_first_names(results):
     """
     # TODO: Use a list comprehension to generate a list of candidate first
     # names from an iterable of Result objects
-    return [r.candidate_name.split(' ')[0] for r in results]
